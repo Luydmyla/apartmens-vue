@@ -3,36 +3,40 @@ import { reactive, computed, ref } from "vue";
 // import Button from "./components/Button.vue";
 // import DirectiveTest from "./components/DirectivesTest.vue";
 // import StarRating from "./components/StarRating.vue";
-import ApartmentsItem from "./components/apartment/ApartmentsItem.vue";
-const apartment = ref({
-  id: "5f05c9dad2c9bc0f773444bc",
-  title:
-    "Aut qui adipisci distinctio maiores molestiae sit est inventore vero.",
-  descr:
-    "Non perferendis rerum a in nisi exercitationem dolorum perferendis. Eligendi sit error sed a. Facere maiores sit adipisci sequi eveniet. Qui est voluptatum maiores eos qui vitae.",
-  price: 2032,
-  rating: 4,
-  location: {
-    city: "Kherson",
-  },
-  owner: {
-    name: "Ellen",
-    phone: "115-355-5652",
-    email: "Tracey.Morar86@hotmail.com",
-  },
-});
+// import ApartmentsItem from "./components/apartment/ApartmentsItem.vue";
+import ApartmentsList from "./components/apartment/ApartmentsList.vue";
+import apartment from "./components/apartment/apartments.js";
+const apartments = ref(apartment);
+// console.log(apartments);
+// const apartment = ref({
+//   id: "5f05c9dad2c9bc0f773444bc",
+//   title:
+//     "Aut qui adipisci distinctio maiores molestiae sit est inventore vero.",
+//   descr:
+//     "Non perferendis rerum a in nisi exercitationem dolorum perferendis. Eligendi sit error sed a. Facere maiores sit adipisci sequi eveniet. Qui est voluptatum maiores eos qui vitae.",
+//   price: 2032,
+//   rating: 4,
+//   location: {
+//     city: "Kherson",
+//   },
+//   owner: {
+//     name: "Ellen",
+//     phone: "115-355-5652",
+//     email: "Tracey.Morar86@hotmail.com",
+//   },
+// });
 </script>
 
 <template>
   <div :id="$style.app">
-    <ApartmentsItem
+    <ApartmentsList :items="apartment" />
+  </div>
+  <!-- <ApartmentsItem
       :descr="apartment.descr"
       :price="apartment.price"
       :rating="apartment.rating"
       imgSrc="https://cdn-7.nikon-cdn.com/Images/Learn-Explore/Photography-Techniques/2019/CA-Chris-Ogonek-Picture-Controls/Media/Chris-Ogonek-Picture-Controls-Vivid.jpg"
-    />
-  </div>
-
+    /> -->
   <!-- <header>
     <img
       alt="Vue logo"
