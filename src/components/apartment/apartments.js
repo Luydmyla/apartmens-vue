@@ -2,7 +2,7 @@ export default [
   {
     id: "5f689a2c09b16000e9a2f47b",
     title: "Delectus et iste.",
-    imgUrl: "/img/apartments/apartment-1.jpg",
+    imgUrl: "./img/apartments/apartment-1.jpg",
     descr:
       "Debitis similique unde et eligendi sapiente in iure blanditiis distinctio. Cum nihil temporibus qui quam aut. Nesciunt qui eveniet eum quam voluptate numquam.",
     rating: 3,
