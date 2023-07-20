@@ -1,7 +1,11 @@
 <template>
   <div class="apartments-item">
     <div class="apartments-item__inner">
-      <img :src="imgSrc" alt="" class="apartments-item__photo" />
+      <img
+        :src="'/apartments-vue' + imgSrc"
+        alt=""
+        class="apartments-item__photo"
+      />
       <div class="apartments-item__content">
         <p class="apartments-item__description">
           {{ descr }}
