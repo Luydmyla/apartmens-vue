@@ -4,6 +4,9 @@ import ApartmentsItem from "./components/apartment/ApartmentsItem.vue";
 import ApartmentsList from "./components/apartment/ApartmentsList.vue";
 import apartment from "./components/apartment/apartments.js";
 const apartments = ref(apartment);
+function handleItemClick() {
+  console.log("Item click");
+}
 </script>
 
 <template>
@@ -18,6 +21,7 @@ const apartments = ref(apartment);
           :price="apartment.price"
           :rating="apartment.rating"
           :imgSrc="apartment.imgUrl"
+          @click.native="handleItemClick"
         />
       </template>
     </ApartmentsList>

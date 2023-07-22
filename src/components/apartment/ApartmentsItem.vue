@@ -1,5 +1,5 @@
 <template>
-  <div class="apartments-item">
+  <div class="apartments-item" @click="$emit('click')">
     <div class="apartments-item__inner">
       <img
         :src="'/apartments-vue' + imgSrc"
@@ -15,6 +15,9 @@
           <StarRating :rating="rating" />
         </div>
         <div class="apartments-item__price">UAN {{ price }}</div>
+        <a href="https://facebook.com" @click.prevent.stop="handleLinkClick"
+          >Facebook</a
+        >
       </div>
     </div>
   </div>
@@ -43,6 +46,14 @@ export default {
     imgSrc: {
       type: String,
       default: "",
+    },
+  },
+  methods: {
+    log(index, event) {
+      console.log(index, event);
+    },
+    handleLinkClick() {
+      console.log("Facebook click");
     },
   },
 };
