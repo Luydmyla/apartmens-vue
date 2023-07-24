@@ -1,0 +1,12 @@
+@import './reset';
+// @import './variables';
+@import './variables.scss';
+
+* {
+    box-sizing: border-box;
+
+    &::before,
+    &::after {
+        box-sizing: inherit;
+    }
+}
