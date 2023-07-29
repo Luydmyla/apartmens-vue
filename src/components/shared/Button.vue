@@ -27,7 +27,8 @@ export default {
 .btn {
   display: inline-block;
   font-size: 18px;
-  background: lightblue;
+  background: #ff662d;
+  color: #fff;
   cursor: pointer;
   min-width: 220px;
   border: 1px solid transparent;

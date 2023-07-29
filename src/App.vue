@@ -2,26 +2,31 @@
 import { reactive, computed, ref } from "vue";
 import ApartmentsItem from "./components/apartment/ApartmentsItem.vue";
 import ApartmentsList from "./components/apartment/ApartmentsList.vue";
-import CustomInput from "./components/shared/CustomInput.vue";
-import CustomSelect from "./components/shared/CustomSelect.vue";
+import Container from "./components/shared/Container.vue";
+import ApartmentsFilterForm from "./components/apartment/ApartmentsFilterForm.vue";
 import apartment from "./components/apartment/apartments.js";
-const apartments = ref(apartment);
 
+const apartments = ref(apartment);
 const text = ref("");
 const selected = ref("name");
+
 function handleItemClick() {
   console.log("Item click");
+}
+function logger(value) {
+  console.log(value, "---form value");
 }
 </script>
 
 <template>
-  <div :id="$style.app">
+  <div id="app">
     <h2>{{ text }}</h2>
-    <h2>{{ selected }}</h2>
-    <CustomSelect v-model="selected" :items="['name', 'label', 'salary']" />
-    <CustomInput v-model="text" />
+    <Container>
+      <ApartmentsFilterForm @submit="logger" class="apartments-filter" />
+    </Container>
+
     <ApartmentsList :items="apartment">
-      <template v-slot:title>New title</template>
+      <!-- <template v-slot:title>New title</template> -->
 
       <template v-slot:apartment="{ apartment }">
         <ApartmentsItem
@@ -37,11 +42,14 @@ function handleItemClick() {
   </div>
 </template>
 
-<style module>
+<style lang="scss" scoped>
 #app {
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   text-align: center;
   color: blue;
   margin-top: 60px;
+}
+.apartments-filter {
+  margin-bottom: 40px;
 }
 </style>

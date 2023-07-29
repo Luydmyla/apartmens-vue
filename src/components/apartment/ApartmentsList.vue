@@ -31,9 +31,5 @@ export default {
   flex-wrap: wrap;
   margin-left: -15px;
   margin-right: -15px;
-
-  /* &__item {
-    margin-bottom: 30px;
-  } */
 }
 </style>
