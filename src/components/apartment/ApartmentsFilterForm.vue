@@ -39,8 +39,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$emit("submit", "form submited");
-      this.$emit("submit", { city: this.city, price: this.price });
+      this.$emit("update:submit", { city: this.city, price: this.price });
       // console.log("Item click");
     },
   },

@@ -9,12 +9,32 @@ import apartment from "./components/apartment/apartments.js";
 const apartments = ref(apartment);
 const text = ref("");
 const selected = ref("name");
+const filters = ref({ city: "", price: 0 });
+
+const filteredApartments = computed(() => {
+  return filterByCityName(filterByPrice(apartments.value));
+});
 
 function handleItemClick() {
   console.log("Item click");
 }
-function logger(value) {
-  console.log(value, "---form value");
+
+function filter({ city, price }) {
+  // console.log(filters.value.city, filters.value.price);
+  filters.value.city = city;
+  filters.value.price = price;
+}
+function filterByCityName(apartments) {
+  if (!filters.value.city) return apartments;
+  return apartments.filter((apartment) => {
+    return apartment.location.city === filters.value.city;
+  });
+}
+function filterByPrice(apartments) {
+  if (!filters.value.price) return apartments;
+  return apartments.filter((apartment) => {
+    return apartment.price >= filters.value.price;
+  });
 }
 </script>
 
@@ -22,10 +42,10 @@ function logger(value) {
   <div id="app">
     <h2>{{ text }}</h2>
     <Container>
-      <ApartmentsFilterForm @submit="logger" class="apartments-filter" />
+      <ApartmentsFilterForm @update:submit="filter" class="apartments-filter" />
     </Container>
-
-    <ApartmentsList :items="apartment">
+    <p v-if="!filteredApartments.length">По вашому запиту нічого не знайдено</p>
+    <ApartmentsList v-else :items="filteredApartments">
       <!-- <template v-slot:title>New title</template> -->
 
       <template v-slot:apartment="{ apartment }">
