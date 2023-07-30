@@ -4,6 +4,9 @@ import ApartmentsItem from "./components/apartment/ApartmentsItem.vue";
 import ApartmentsList from "./components/apartment/ApartmentsList.vue";
 import Container from "./components/shared/Container.vue";
 import ApartmentsFilterForm from "./components/apartment/ApartmentsFilterForm.vue";
+import AppFooter from "./components/Footer.vue";
+import AppHeader from "./components/Header.vue";
+
 import apartment from "./components/apartment/apartments.js";
 
 const apartments = ref(apartment);
@@ -40,35 +43,51 @@ function filterByPrice(apartments) {
 
 <template>
   <div id="app">
-    <h2>{{ text }}</h2>
-    <Container>
-      <ApartmentsFilterForm @update:submit="filter" class="apartments-filter" />
-    </Container>
-    <p v-if="!filteredApartments.length">По вашому запиту нічого не знайдено</p>
-    <ApartmentsList v-else :items="filteredApartments">
-      <!-- <template v-slot:title>New title</template> -->
-
-      <template v-slot:apartment="{ apartment }">
-        <ApartmentsItem
-          :key="apartment.id"
-          :descr="apartment.descr"
-          :price="apartment.price"
-          :rating="apartment.rating"
-          :imgSrc="apartment.imgUrl"
-          @click.native="handleItemClick"
+    <div class="content">
+      <AppHeader />
+      <h2>{{ text }}</h2>
+      <Container>
+        <ApartmentsFilterForm
+          @update:submit="filter"
+          class="apartments-filter"
         />
-      </template>
-    </ApartmentsList>
+      </Container>
+      <Container>
+        <p v-if="!filteredApartments.length">
+          По вашому запиту нічого не знайдено
+        </p>
+        <ApartmentsList v-else :items="filteredApartments">
+          <!-- <template v-slot:title>New title</template> -->
+
+          <template v-slot:apartment="{ apartment }">
+            <ApartmentsItem
+              :key="apartment.id"
+              :descr="apartment.descr"
+              :price="apartment.price"
+              :rating="apartment.rating"
+              :imgSrc="apartment.imgUrl"
+              @click.native="handleItemClick"
+            />
+          </template>
+        </ApartmentsList>
+      </Container>
+    </div>
+    <AppFooter />
   </div>
 </template>
 
 <style lang="scss" scoped>
 #app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: Montserrat, Helvetica, Arial, sans-serif;
-  text-align: center;
-  color: blue;
-  margin-top: 60px;
 }
+.content {
+  flex-grow: 1;
+  padding-top: 120px;
+}
+
 .apartments-filter {
   margin-bottom: 40px;
 }
