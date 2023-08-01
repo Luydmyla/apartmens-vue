@@ -47,6 +47,7 @@ function filterByPrice(apartments) {
       <AppHeader />
       <h2>{{ text }}</h2>
       <Container>
+        <router-view></router-view>
         <ApartmentsFilterForm
           @update:submit="filter"
           class="apartments-filter"
