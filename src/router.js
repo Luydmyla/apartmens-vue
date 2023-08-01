@@ -5,7 +5,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
-    path: "https://luydmyla.github.io/apartments-vue/foo",
+    path: "/foo",
     component: Foo,
   },
   {
