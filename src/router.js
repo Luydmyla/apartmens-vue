@@ -5,11 +5,11 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
-    path: "/foo",
+    path: "/apartments-vue/foo",
     component: Foo,
   },
   {
-    path: "/bar",
+    path: "/apartments-vue/bar",
     component: Bar,
   },
 ];
