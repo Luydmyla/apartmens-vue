@@ -1,5 +1,7 @@
 <template>
-  <img src="../assets/svg/logo.svg" />
+  <a href="">
+    <img src="../assets/svg/logo.svg" />
+  </a>
 </template>
 
 <script>

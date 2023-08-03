@@ -1,10 +1,20 @@
 <template>
-  <footer class="footer"></footer>
+  <footer class="footer">
+    <Container>
+      <Logo />
+    </Container>
+  </footer>
 </template>
 
 <script>
+import Container from "./shared/Container.vue";
+import Logo from "./Logo.vue";
 export default {
   name: "Footer",
+  components: {
+    Container,
+    Logo,
+  },
 };
 </script>
 
