@@ -16,10 +16,12 @@ const routes = [
   {
     path: "/apartments-vue/",
     component: Homepage,
+    name: "homepage",
   },
   {
     path: "/apartments-vue/apartment",
     component: Apartment,
+    name: "apartment",
   },
 ];
 
