@@ -2,6 +2,8 @@ import Foo from "./pages/Foo.vue";
 import Bar from "./pages/Bar.vue";
 import Homepage from "./pages/Homepage.vue";
 import Apartment from "./pages/Apartment.vue";
+import ErrorPage from "./pages/ErrorPage.vue";
+
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
@@ -19,9 +21,14 @@ const routes = [
     name: "homepage",
   },
   {
-    path: "/apartments-vue/apartment",
+    path: "/apartments-vue/apartment/:id",
     component: Apartment,
     name: "apartment",
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    component: ErrorPage,
+    name: "error-page",
   },
 ];
 
