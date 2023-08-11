@@ -26,7 +26,7 @@ const routes = [
     name: "apartment",
   },
   {
-    path: "/apartments-vue/:pathMatch(.*)*",
+    path: "/:pathMatch(.*)",
     component: ErrorPage,
     name: "error-page",
   },
