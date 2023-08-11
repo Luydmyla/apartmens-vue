@@ -30,4 +30,18 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.reviews-heading {
+  display: flex;
+  align-items: center;
+
+  &__avatar {
+    margin-right: 18px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+</style>

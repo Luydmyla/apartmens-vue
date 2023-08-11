@@ -24,4 +24,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.reviews {
+  margin-top: 20px;
+  /* background: $card-bg; */
+  background: blue;
+  padding: 0 2px;
+}
+</style>
