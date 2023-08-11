@@ -5,7 +5,11 @@
       <Rating :rating="apartment.rating" />
     </div>
 
-    <img :src="apartment.imgUrl" alt="" class="apartment-main-info__photo" />
+    <img
+      :src="'/apartments-vue' + apartment.imgUrl"
+      alt="photo"
+      class="apartment-main-info__photo"
+    />
     <p class="apartment-main-info__description">{{ apartment.descr }}</p>
   </article>
 </template>
