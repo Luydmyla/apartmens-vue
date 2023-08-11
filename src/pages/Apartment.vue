@@ -2,12 +2,14 @@
   <main class="apartment-page">
     <Container>
       <div class="apartment-page__content">
-        <!-- <h1>Apartment Page</h1> -->
         <ApartmentsMainInfo :apartment="apartment" />
-        <ApartmentsOwner
-          :owner="apartment.owner"
-          class="apartment-page__owner"
-        />
+        <div class="apartment-page__additional-info">
+          <ApartmentsOwner
+            :owner="apartment.owner"
+            class="apartment-page__owner"
+          />
+          <Reviews :reviews="reviewsList" />
+        </div>
       </div>
     </Container>
   </main>
@@ -17,12 +19,16 @@
 import apartments from "../components/apartment/apartments.js";
 import ApartmentsMainInfo from "../components/apartment/ApartmentsMainInfo.vue";
 import ApartmentsOwner from "../components/apartment/ApartmentsOwner.vue";
-
+import reviewsList from "../components/reviews/reviews.json";
+import Reviews from "../components/reviews/index.vue";
 import Container from "../components/shared/Container.vue";
 export default {
   name: "ApartmenPage",
-  components: { Container, ApartmentsMainInfo, ApartmentsOwner },
+  components: { Container, ApartmentsMainInfo, ApartmentsOwner, Reviews },
   computed: {
+    reviewsList() {
+      return reviewsList;
+    },
     apartment() {
       return apartments.find(
         (apartment) => apartment.id === this.$route.params.id
