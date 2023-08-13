@@ -5,6 +5,7 @@
       :key="review.author"
       :review="review"
     />
+    <button class="reviews__show-more">Читати ще...</button>
   </section>
 </template>
 
@@ -30,5 +31,15 @@ export default {
   /* background: $card-bg; */
   background: blue;
   padding: 0 2px;
+  &__show-more {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 16px;
+    color: white;
+  }
 }
 </style>
