@@ -1,5 +1,12 @@
 <template>
   <section class="reviews">
+    <div class="reviews__heading">
+      <h2 class="reviews__title">Сумарний рейтинг</h2>
+      <div class="reviews__rating">
+        <span>98 відгуків</span>
+        <Rating :rating="0" />
+      </div>
+    </div>
     <ReviewsItem
       v-for="review in reviews"
       :key="review.author"
@@ -11,10 +18,13 @@
 
 <script>
 import ReviewsItem from "./reviews-item/index.vue";
+import Rating from "../StarRating.vue";
+
 export default {
   name: "Reviews",
   components: {
     ReviewsItem,
+    Rating,
   },
   props: {
     reviews: {
