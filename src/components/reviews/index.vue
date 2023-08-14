@@ -8,7 +8,7 @@
       </div>
     </div>
     <ReviewsItem
-      v-for="review in reviews"
+      v-for="review in currentReviews"
       :key="review.author"
       :review="review"
     />
@@ -42,6 +42,9 @@ export default {
     },
     amountOfReviews() {
       return this.reviews.length;
+    },
+    currentReviews() {
+      return this.reviews.slice(0, 2);
     },
   },
 };
