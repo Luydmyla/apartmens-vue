@@ -52,12 +52,12 @@ export default {
       return this.reviews.length;
     },
     currentReviews() {
-      return this.reviews.slice(0, 2);
+      return this.reviews.slice(0, this.reviewsLimit);
     },
     buttonText() {
-      return (this.reviewsLimit = this.reviews.length
+      return this.reviewsLimit === this.reviews.length
         ? "Згорнути"
-        : "Читати ще...");
+        : "Читати ще...";
     },
   },
   methods: {
