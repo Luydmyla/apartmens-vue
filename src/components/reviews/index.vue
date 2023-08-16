@@ -12,9 +12,8 @@
       :key="review.author"
       :review="review"
     />
-    <button @click="showAllReviews" class="reviews__show-more">
+    <button @click="toggleReviews" class="reviews__show-more">
       {{ buttonText }}
-      <!-- Читати ще... -->
     </button>
   </section>
 </template>
@@ -61,7 +60,14 @@ export default {
     },
   },
   methods: {
-    showAllReviews() {
+    // showAllReviews() {
+    //   this.reviewsLimit = this.reviews.length;
+    // },
+    toggleReviews() {
+      if (this.reviewsLimit === this.reviews.length) {
+        this.reviewsLimit = 2;
+        return;
+      }
       this.reviewsLimit = this.reviews.length;
     },
   },
