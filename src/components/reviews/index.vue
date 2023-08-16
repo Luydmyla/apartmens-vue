@@ -12,7 +12,10 @@
       :key="review.author"
       :review="review"
     />
-    <button class="reviews__show-more">Читати ще...</button>
+    <button @click="showAllReviews" class="reviews__show-more">
+      {{ buttonText }}
+      <!-- Читати ще... -->
+    </button>
   </section>
 </template>
 
@@ -32,6 +35,11 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      reviewsLimit: 2,
+    };
+  },
   computed: {
     totalRating() {
       const total = this.reviews.reduce(
@@ -45,6 +53,16 @@ export default {
     },
     currentReviews() {
       return this.reviews.slice(0, 2);
+    },
+    buttonText() {
+      return (this.reviewsLimit = this.reviews.length
+        ? "Згорнути"
+        : "Читати ще...");
+    },
+  },
+  methods: {
+    showAllReviews() {
+      this.reviewsLimit = this.reviews.length;
     },
   },
 };
