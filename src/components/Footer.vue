@@ -1,7 +1,9 @@
 <template>
   <footer class="footer">
     <Container>
-      <Logo />
+      <router-link to="/apartments-vue">
+        <Logo />
+      </router-link>
     </Container>
   </footer>
 </template>

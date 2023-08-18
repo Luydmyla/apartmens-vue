@@ -33,9 +33,10 @@ import ApartmentsList from "../components/apartment/ApartmentsList.vue";
 import ApartmentsItem from "../components/apartment/ApartmentsItem.vue";
 import ApartmentsFilterForm from "../components/apartment/ApartmentsFilterForm.vue";
 import Container from "../components/shared/Container.vue";
-import apartment from "../components/apartment/apartments.js";
+// import apartment from "../components/apartment/apartments.js";
+import { getApartmentsList } from "../services/apartments.service.js";
 
-const apartments = ref(apartment);
+const apartments = ref([]);
 const text = ref("");
 const selected = ref("name");
 const filters = ref({ city: "", price: 0 });
@@ -43,7 +44,16 @@ const filters = ref({ city: "", price: 0 });
 const filteredApartments = computed(() => {
   return filterByCityName(filterByPrice(apartments.value));
 });
-
+async function created() {
+  try {
+    const { data } = await getApartmentsList();
+    console.log(data);
+    apartments.value = data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+created();
 function handleItemClick() {
   console.log("Item click");
 }

@@ -5,8 +5,13 @@
       <Rating :rating="apartment.rating" />
     </div>
 
-    <img
+    <!-- <img
       :src="'/apartments-vue' + apartment.imgUrl"
+      alt="photo"
+      class="apartment-main-info__photo"
+    /> -->
+    <img
+      :src="apartment.imgUrl"
       alt="photo"
       class="apartment-main-info__photo"
     />
