@@ -1,7 +1,12 @@
 <template>
   <form @submit.prevent="handleSubmit" class="form">
     <CustomSelect :items="cities" v-model="city" class="form__select" />
-    <CustomInput v-model="price" placeholder="ціна, від" />
+    <CustomInput 
+    v-model="price" 
+    placeholder="ціна, від" 
+    error-message="Поле не повинно бути порожнім"
+    :rules="[(val) => !!val]"
+    />
     <SubmitButton type="submit" class="form__submit">Підбір житла</SubmitButton>
   </form>
 </template>

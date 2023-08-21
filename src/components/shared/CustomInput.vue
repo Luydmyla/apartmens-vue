@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper-input">
-   <input :value="modelValue" @input="onInput" class="custom-input" />
+   <input :value="modelValue" @input="onInput" class="custom-input" :class="!isValid && 'custom-input--error'"/>
    <span v-if="!isValid" class="custom-input__error">{{ errorMessage }}</span>
   </div>
 </template>
@@ -48,7 +48,10 @@ watch: {
 
 <style lang="scss" scoped>
 @import "../../assets/scss/variables";
-
+.wrapper-input {
+  position: relative;
+  display: inline-flex;
+}
 .custom-input {
   height: 40px;
   max-width: 220px;
@@ -61,6 +64,19 @@ watch: {
 
   &::placeholder {
     color: inherit;
+  }
+  &--error {
+    border-color: #b700ff;
+  }
+
+  &__error {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    font-size: 12px;
+    color: #b700ff;
+    line-height: 1.3;
   }
 }
 </style>
