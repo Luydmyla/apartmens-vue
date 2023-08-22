@@ -5,7 +5,7 @@
     v-model="price" 
     placeholder="ціна, від" 
     error-message="Поле не повинно бути порожнім"
-    :rules="[(val) => !!val]"
+    :rules="rules"
     />
     <SubmitButton type="submit" class="form__submit">Підбір житла</SubmitButton>
   </form>
@@ -15,6 +15,8 @@
 import CustomSelect from "../shared/CustomSelect.vue";
 import CustomInput from "../shared/CustomInput.vue";
 import SubmitButton from "../shared/Button.vue";
+import { isRequired, charLimit } from '../../utils/validationsRules.js'
+
 export default {
   components: {
     CustomSelect,
@@ -28,6 +30,9 @@ export default {
     };
   },
   computed: {
+    rules() {
+      return [isRequired, charLimit(10)];
+    },
     cities() {
       return [
         { value: "", label: "Місто", selected: true },

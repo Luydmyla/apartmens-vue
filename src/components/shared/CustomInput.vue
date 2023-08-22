@@ -1,7 +1,11 @@
 <template>
   <div class="wrapper-input">
-   <input :value="modelValue" @input="onInput" class="custom-input" :class="!isValid && 'custom-input--error'"/>
-   <span v-if="!isValid" class="custom-input__error">{{ errorMessage }}</span>
+   <input :value="modelValue"
+   v-bind="$attrs" 
+   @input="onInput" 
+   class="custom-input" 
+   :class="!isValid && 'custom-input--error'"/>
+   <span v-if="!isValid" class="custom-input__error">{{ error }}</span>
   </div>
 </template>
 
@@ -10,8 +14,9 @@ export default {
   name: "CustomInput",
   data() {
     return {
-      isValid: true
-    }
+      isValid: true,
+      error: "",
+    };
   },
   props: {
     modelValue: {
@@ -39,10 +44,18 @@ watch: {
     onInput(event) {
       this.$emit("update:modelValue", event.target.value);
     },
-    validate(value) {
-      this.isValid = this.rules.every((rule) => rule(value))
+     validate() {
+      this.isValid = this.rules.every((rule) => {
+        const { hasPassed, message } = rule(this.modelValue)
+        if (!hasPassed) {
+          this.error = message || this.errorMessage;
+        }
+       
+        return hasPassed;
+        
+      })
     }
-  },
+    },
 };
 </script>
 
