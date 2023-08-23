@@ -18,6 +18,8 @@ export default {
       error: "",
     };
   },
+  inject: ['form'],
+     inheritAttrs: false,
   props: {
     modelValue: {
       type: String,
@@ -35,11 +37,21 @@ export default {
     }
   },
 watch: {
-  modelValue(value){
-    this.validate(value)
-    console.log(value)
+  modelValue(){
+    this.validate()
+    // console.log(value)
   }
-},
+  },
+  mounted() {
+    // перевіряємо чи є форма, якщо ні просто повертаємось, якщо так - реєструємо саме цю форму, що є
+    if (!this.form) return
+    this.form.registerInput(this)
+  },
+  // памятаємо про утєчку памяті, тому перед анмаунтінгом прибираємо інпут із загального масива нашої форми
+  beforeUnmount() {
+    if (!this.form) return
+    this.form.unRegisterInput(this)
+  },
   methods: {
     onInput(event) {
       this.$emit("update:modelValue", event.target.value);
