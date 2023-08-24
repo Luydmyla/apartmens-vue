@@ -23,8 +23,13 @@ export default {
         },
         unRegisterInput(input) {
             this.inputs.filter(item => item !== input)
-        }
-
+        },
+         validate() {
+            return this.input.every(input => input.validate())
+        },
+        reset() {
+            this.input.forEach((input) => input.reset())
+        },
     }
 }
 </script>
