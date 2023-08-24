@@ -62,10 +62,11 @@ watch: {
         if (!hasPassed) {
           this.error = message || this.errorMessage;
         }
-       
-        return hasPassed;
-        
+       return hasPassed;
       })
+    },
+    reset() {
+      this.$emit('input', '')
     }
     },
 };
