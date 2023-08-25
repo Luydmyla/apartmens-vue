@@ -27,14 +27,14 @@ const routes = [
     name: "apartment",
   },
   {
+    path: "/apartments-vue/login",
+    component: LoginPage,
+    name: "Login-page",
+  },
+  {
     path: "/:pathMatch(.*)",
     component: ErrorPage,
     name: "error-page",
-  },
-  {
-    path: "Login",
-    component: LoginPage,
-    name: "Login-page",
   },
 ];
 

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Form from '../shared/form'
+import Form from '../shared/form/index.vue'
 import CustomInput from '../shared/CustomInput.vue';
 export default {
     name: "Login",
