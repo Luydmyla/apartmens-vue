@@ -87,6 +87,9 @@ watch: {
   outline: none;
   line-height: inherit;
   padding: 8px 15px;
+  &:hover {
+    border: 2px solid grey;
+  }
 
   &::placeholder {
     color: inherit;
