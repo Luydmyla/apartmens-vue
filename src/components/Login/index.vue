@@ -1,5 +1,5 @@
 <template>
-    <Form @submit.prevent="handleSubmit">
+    <Form ref="form"  @submit.prevent="handleSubmit">
         <CustomInput v-model="formData.email" name="email" :rules="emailRules" />
         <CustomInput v-model="formData.password" name="password" :rules="passwordRules"/>
     <Button type="submit">Click me</Button>
