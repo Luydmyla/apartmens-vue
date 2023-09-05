@@ -43,7 +43,10 @@ export default {
     },
     methods: {
         handleSubmit() {
-            console.log(this.formData)
+            const isFormValid=this.$refs.form.validate()
+            if (isFormValid) {
+                console.log(this.formData)
+            }
         }
     }
 }
