@@ -1,17 +1,20 @@
 <template>
   <main class="apartment-page">
-    <Container>
-      <div v-if="apartment" class="apartment-page__content">
-        <ApartmentsMainInfo :apartment="apartment" />
-        <div class="apartment-page__additional-info">
-          <ApartmentsOwner
-            :owner="apartment.owner"
-            class="apartment-page__owner"
-          />
-          <Reviews :reviews="reviewsList" />
+    <SectionWithHeaderSpacer>
+   <Container>
+        <div v-if="apartment" class="apartment-page__content">
+          <ApartmentsMainInfo :apartment="apartment" />
+          <div class="apartment-page__additional-info">
+            <ApartmentsOwner
+              :owner="apartment.owner"
+              class="apartment-page__owner"
+            />
+            <Reviews :reviews="reviewsList" />
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </SectionWithHeaderSpacer>
+   
   </main>
 </template>
 
@@ -22,11 +25,13 @@ import ApartmentsOwner from "../components/apartment/ApartmentsOwner.vue";
 import reviewsList from "../components/reviews/reviews.json";
 import Reviews from "../components/reviews/index.vue";
 import Container from "../components/shared/Container.vue";
+import SectionWithHeaderSpacer from "../components/shared/SectionWithHeaderSpacer.vue";
+
 import { getApartmentById } from "../services/apartments.service.js";
 
 export default {
   name: "ApartmenPage",
-  components: { Container, ApartmentsMainInfo, ApartmentsOwner, Reviews },
+  components: { Container, SectionWithHeaderSpacer,  ApartmentsMainInfo, ApartmentsOwner, Reviews },
   data() {
     return {
       apartment: null,

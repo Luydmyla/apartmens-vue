@@ -1,29 +1,33 @@
 <template>
   <main class="homepage">
-    <Container>
-      <ApartmentsFilterForm
-        @update:modelValue="filter"
-        class="apartments-filter"
-      />
-    </Container>
-    <Container>
-      <p v-if="!filteredApartments.length">
-        По вашому запиту нічого не знайдено
-      </p>
-      <ApartmentsList v-else :items="filteredApartments">
-        <template v-slot:apartment="{ apartment }">
-          <ApartmentsItem
-            :key="apartment.id"
-            :id="apartment.id"
-            :descr="apartment.descr"
-            :price="apartment.price"
-            :rating="apartment.rating"
-            :imgSrc="apartment.imgUrl"
-            @click="handleItemClick"
-          />
-        </template>
-      </ApartmentsList>
-    </Container>
+     <SectionWithHeaderSpacer>
+   <Container>
+        <ApartmentsFilterForm
+          @update:modelValue="filter"
+          class="apartments-filter"
+        />
+      </Container>
+      <Container>
+        <p v-if="!filteredApartments.length">
+          По вашому запиту нічого не знайдено
+        </p>
+        <ApartmentsList v-else :items="filteredApartments">
+          <template v-slot:apartment="{ apartment }">
+            <ApartmentsItem
+              :key="apartment.id"
+              :id="apartment.id"
+              :descr="apartment.descr"
+              :price="apartment.price"
+              :rating="apartment.rating"
+              :imgSrc="apartment.imgUrl"
+              @click="handleItemClick"
+            />
+          </template>
+        </ApartmentsList>
+      </Container>
+
+     </SectionWithHeaderSpacer>
+   
   </main>
 </template>
 
@@ -33,6 +37,8 @@ import ApartmentsList from "../components/apartment/ApartmentsList.vue";
 import ApartmentsItem from "../components/apartment/ApartmentsItem.vue";
 import ApartmentsFilterForm from "../components/apartment/ApartmentsFilterForm.vue";
 import Container from "../components/shared/Container.vue";
+import SectionWithHeaderSpacer from "../components/shared/SectionWithHeaderSpacer.vue";
+
 // import apartment from "../components/apartment/apartments.js";
 import { getApartmentsList } from "../services/apartments.service.js";
 

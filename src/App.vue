@@ -26,6 +26,6 @@ import apartment from "./components/apartment/apartments.js";
 }
 .content {
   flex-grow: 1;
-  padding-top: 120px;
+  /* padding-top: 120px; */
 }
 </style>
