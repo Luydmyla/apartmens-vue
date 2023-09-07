@@ -57,13 +57,14 @@ watch: {
       this.$emit("update:modelValue", event.target.value);
     },
      validate() {
-      this.isValid = this.rules.every((rule) => {
-        const { hasPassed, message } = rule(this.modelValue)
-        if (!hasPassed) {
-          this.error = message || this.errorMessage;
-        }
-       return hasPassed;
-      })
+       this.isValid = this.rules.every((rule) => {
+         const { hasPassed, message } = rule(this.modelValue)
+         if (!hasPassed) {
+           this.error = message || this.errorMessage;
+         }
+         return hasPassed;
+       });
+       return this.isValid;
     },
     reset() {
       this.$emit('input', '')
