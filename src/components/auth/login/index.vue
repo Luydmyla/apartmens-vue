@@ -3,7 +3,7 @@
             <MainTitle class="login__title"> Логін </MainTitle>
     <Form ref="form" class="login__form" @submit.prevent="handleSubmit">
         <CustomInput v-model="formData.email" name="email"   placeholder="email" class="login__input" :rules="emailRules" />
-        <CustomInput v-model="formData.password" name="password"  placeholder="password" class="login__input" :rules="passwordRules"/>
+        <CustomInput v-model="formData.password" name="password" type="password" placeholder="password" class="login__input" :rules="passwordRules"/>
     <Button type="submit" class="login__btn">Вхід</Button>
     </Form>
       </AuthContainer> 
@@ -16,6 +16,8 @@ import AuthContainer from '../AuthContainer.vue';
 import MainTitle from '../../shared/MainTitle.vue';
 import Button from '../../shared/Button.vue'
 import { emailValidation, passwordValidation, isRequired } from '../../../utils/validationsRules.js'
+import { loginUser } from '../../../services/auth.service'
+
 export default {
     name: "Login",
     components: {
@@ -45,14 +47,19 @@ export default {
             return [this.rules.isRequired, this.rules.emailValidation]
         },
         passwordRules() {
-            return [this.rules.isRequired, this.rules.passwordValidation]
+            return [this.rules.isRequired]
         }
     },
     methods: {
-        handleSubmit() {
+     async  handleSubmit() {
             const isFormValid=this.$refs.form.validate()
             if (isFormValid) {
-                console.log(this.formData)
+                try {
+                    const { data } = await loginUser(this.formData)
+                    console.log(this.formData)
+                } catch (error) {
+                 console.log(error)   
+                }
             }
         }
     }
