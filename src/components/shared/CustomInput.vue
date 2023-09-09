@@ -79,7 +79,7 @@ watch: {
   position: relative;
   display: inline-flex;
   width: 100%;
-   margin-bottom: 20px;
+   /* margin-bottom: 20px; */
 }
 .custom-input {
   height: 40px;
