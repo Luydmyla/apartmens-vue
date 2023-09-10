@@ -32,7 +32,7 @@ export default {
         }, true);
         },
         reset() {
-            this.input.forEach((input) => input.reset())
+            this.inputs.forEach((input) => input.reset())
         },
     }
 }

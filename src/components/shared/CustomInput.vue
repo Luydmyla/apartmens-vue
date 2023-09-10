@@ -67,7 +67,7 @@ watch: {
        return this.isValid;
     },
     reset() {
-      this.$emit('input', '')
+      this.$emit("update:modelValue", '');
     }
     },
 };

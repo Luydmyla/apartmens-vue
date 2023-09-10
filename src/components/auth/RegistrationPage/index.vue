@@ -79,13 +79,15 @@ export default {
     methods: {
         async handleSubmit() {
             // console.log(this.$refs.form)
-            const isFormValid = this.$refs.form.validate();
+               const { form } = this.$refs;
+            const isFormValid = form.validate();
             const { name, password, email } = this.formData;
             // console.log(isFormValid)
             if (isFormValid) {
                 try {
                     const { data } = await registerUser({ name, password, email })
                     console.log(data)
+                     form.reset()
                 } catch (error) {
                     console.log(error)
                 }
