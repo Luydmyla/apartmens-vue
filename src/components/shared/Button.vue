@@ -4,7 +4,7 @@
   <button v-bind:type="type"
   :disabled="loading"
   :class="{ btn: true, 'btn--outlined': outlined }">
-   <CircleLoader v-if="loading" width="40" height="40"/>
+   <CircleLoader v-if="loading" width="38" height="38" class="btn__loader"/>
       <span class="btn__content" :class="contentStyles">
   <slot></slot>
   </span>
@@ -48,6 +48,7 @@ export default {
 <!-- <style scoped > -->
 <style lang="scss" scoped>
 .btn {
+   position: relative;
   display: inline-block;
   font-size: 18px;
   background: #ff662d;
@@ -66,6 +67,13 @@ export default {
     &--hidden{
       opacity: 0;
     }
+  }
+   &__loader{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 </style>
