@@ -12,7 +12,7 @@
             <CustomInput v-model="formData.confirmPassword" placeholder="Confirm password" autocomplete="current-password"
                 name="password" type="password" :rules="confirmPassword" class="registration__input" />
 
-            <Button type="submit" class="registration__btn">Вхід</Button>
+            <Button type="submit" :loading="loading" class="registration__btn">Вхід</Button>
         </Form>
     </AuthContainer>
 </template>
@@ -39,6 +39,7 @@ export default {
     },
     data() {
         return {
+              loading: false,
             formData: {
                 name: '',
                 email: '',
@@ -85,11 +86,15 @@ export default {
             // console.log(isFormValid)
             if (isFormValid) {
                 try {
+                      this.loading = true
                     const { data } = await registerUser({ name, password, email })
                     console.log(data)
                      form.reset()
                 } catch (error) {
                     console.log(error)
+                }
+                finally {
+                    this.loading = false
                 }
             }
         },

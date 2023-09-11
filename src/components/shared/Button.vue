@@ -31,8 +31,8 @@ export default {
     },
      loading: {
       type: Boolean,
-      // default: false
-      default: true
+      default: false
+     
     }
   },
   computed: {
