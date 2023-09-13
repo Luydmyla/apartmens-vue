@@ -2,5 +2,5 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import "./assets/scss/index.scss";
 import router from "./router.js";
-
-createApp(App).use(router).mount("#app");
+import Notifications from "@kyvg/vue3-notification";
+createApp(App).use(Notifications).use(router).mount("#app");

@@ -8,6 +8,7 @@ import apartment from "./components/apartment/apartments.js";
 
 <template>
   <div id="app">
+    <notifications />
     <div class="content">
       <AppHeader />
       <!-- <h2>{{ text }}</h2> -->
