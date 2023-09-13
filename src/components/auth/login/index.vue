@@ -75,7 +75,12 @@ export default {
                     const { data } = await loginUser(this.formData)
                     console.log(this.formData)
                 } catch (error) {
-                 console.log(error)   
+                    console.log(error)  
+                  this.$notify({
+                        type: 'error',
+                        title: 'Произошла ошибка',
+                        text: error.message,
+                    }); 
                 }
                 finally {
                     this.loading = false

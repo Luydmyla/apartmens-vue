@@ -92,6 +92,11 @@ export default {
                      form.reset()
                 } catch (error) {
                     console.log(error)
+                     this.$notify({
+                        type: 'error',
+                        title: 'Произошла ошибка',
+                        text: error.message,
+                    });
                 }
                 finally {
                     this.loading = false
