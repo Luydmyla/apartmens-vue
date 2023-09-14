@@ -18,8 +18,12 @@ export default {
       error: "",
     };
   },
-  inject: ['form'],
-     inheritAttrs: false,
+  inject: {
+    form: {
+      default: null
+    }
+  },
+  inheritAttrs: false,
   props: {
     modelValue: {
       type: String,
