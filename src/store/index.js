@@ -16,6 +16,4 @@ const store = createStore({
   },
 });
 
-console.log(store.state.userName);
-
 export default store;
