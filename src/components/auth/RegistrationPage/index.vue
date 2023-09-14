@@ -89,6 +89,11 @@ export default {
                       this.loading = true
                     const { data } = await registerUser({ name, password, email })
                     console.log(data)
+                    const { user, token } = data;
+                      this.$store.commit('setUserData', user)
+                    this.$store.commit('setToken', token)
+
+                    console.log(this.$store.state)
                      form.reset()
                 } catch (error) {
                     console.log(error)

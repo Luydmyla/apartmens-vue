@@ -1,20 +1,20 @@
-import Vuex from "vuex";
+import { createStore } from "vuex";
 
-// створюємо простіше храніліще стейтів(наших реактивних властивостей), ікі можна змінювати лише за допомогою мутейшн - це методи
-const store = new Vuex.Store({
-  state: {
-    userName: "John",
-  },
+const initialState = {
+  user: null,
+  token: "",
+};
+const store = createStore({
+  state: { ...initialState },
   mutations: {
-    changeName(state, newName) {
-      state.userName = newName;
+    setUserData(state, userData) {
+      state.user = userData;
+    },
+    setToken(state, token) {
+      state.token = token;
     },
   },
 });
-
-// setTimeout(() => {
-store.commit("changeName", "Oleg");
-// }, 1000);
 
 console.log(store.state.userName);
 

@@ -3,15 +3,10 @@ import App from "./App.vue";
 import "./assets/scss/index.scss";
 import router from "./router.js";
 import Notifications from "@kyvg/vue3-notification";
-import Vuex from "vuex";
+
 import store from "./store/index.js";
 
-createApp(App)
-  .use(Vuex)
-  .use(store)
-  .use(Notifications)
-  .use(router)
-  .mount("#app");
+createApp(App).use(store).use(Notifications).use(router).mount("#app");
 
 // const store = new Vuex.Store({
 //   state: {
