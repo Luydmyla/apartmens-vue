@@ -31,7 +31,7 @@ import AuthContainer from '../AuthContainer.vue';
 import MainTitle from '../../shared/MainTitle.vue';
 import Button from '../../shared/Button.vue'
 import { emailValidation, passwordValidation, isRequired } from '../../../utils/validationsRules.js'
-import { loginUser } from '../../../services/auth.service'
+// import { loginUser } from '../../../services/auth.service'
 
 export default {
     name: "Login",
@@ -73,11 +73,12 @@ export default {
             if (isFormValid) {
                 try {
                       this.loading = true
-                    const { data } = await loginUser(this.formData)
-                    // console.log(data)
-                     const { user, token } = data;
-                    this.$store.commit('setUserData', user)
-                    this.$store.commit('setToken', token)
+                    // const { data } = await loginUser(this.formData)
+                    // // console.log(data)
+                    //  const { user, token } = data;
+                    // this.$store.commit('setUserData', user)
+                    // this.$store.commit('setToken', token)
+                     await this.$store.dispatch('login', this.formData)
                     // console.log(this.$store.state)
                     this.$router.push({name: 'homepage'})
                     form.reset()
