@@ -88,12 +88,10 @@ export default {
                 try {
                       this.loading = true
                     const { data } = await registerUser({ name, password, email })
-                    console.log(data)
                     const { user, token } = data;
                       this.$store.commit('setUserData', user)
                     this.$store.commit('setToken', token)
-
-                    console.log(this.$store.state)
+                      this.$router.push({ name: 'homepage' })
                      form.reset()
                 } catch (error) {
                     console.log(error)
