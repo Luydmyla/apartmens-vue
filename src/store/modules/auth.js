@@ -6,6 +6,7 @@ const initialState = {
 };
 
 export default {
+  namespaced: true,
   state: { ...initialState },
   mutations: {
     setUserData(state, userData) {
@@ -23,7 +24,7 @@ export default {
       commit("setUserData", user);
       commit("setToken", token);
     },
-    async registration({ commit }, payload) {
+    async registerUser({ commit }, payload) {
       const { data } = await registerUser(payload);
       const { user, token } = data;
 

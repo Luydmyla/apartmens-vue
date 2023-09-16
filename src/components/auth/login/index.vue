@@ -32,6 +32,7 @@ import MainTitle from '../../shared/MainTitle.vue';
 import Button from '../../shared/Button.vue'
 import { emailValidation, passwordValidation, isRequired } from '../../../utils/validationsRules.js'
 // import { loginUser } from '../../../services/auth.service'
+import { mapActions } from 'vuex'
 
 export default {
     name: "Login",
@@ -67,6 +68,7 @@ export default {
         }
     },
     methods: {
+         ...mapActions('auth', ['login']),
      async  handleSubmit() {
           const { form } = this.$refs;
             const isFormValid = form.validate();
@@ -78,7 +80,9 @@ export default {
                     //  const { user, token } = data;
                     // this.$store.commit('setUserData', user)
                     // this.$store.commit('setToken', token)
-                     await this.$store.dispatch('login', this.formData)
+                    //  await this.$store.dispatch('login', this.formData)
+                        await this.login(this.formData)
+                    
                     // console.log(this.$store.state)
                     this.$router.push({name: 'homepage'})
                     form.reset()

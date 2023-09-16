@@ -25,6 +25,7 @@ import MainTitle from '../../shared/MainTitle.vue';
 import Button from '../../shared/Button.vue'
 import { emailValidation, passwordValidation, isRequired } from '../../../utils/validationsRules.js'
 // import { registerUser } from '../../../services/auth.service'
+import { mapActions } from 'vuex'
 
 
 
@@ -78,6 +79,7 @@ export default {
         }
     },
     methods: {
+          ...mapActions('auth', ['registerUser']),
         async handleSubmit() {
             // console.log(this.$refs.form)
                const { form } = this.$refs;
@@ -91,8 +93,9 @@ export default {
                     // const { user, token } = data;
                     //   this.$store.commit('setUserData', user)
                     // this.$store.commit('setToken', token)
-                      await this.$store.dispatch('registration', { name, password, email })
-                      this.$router.push({ name: 'homepage' })
+                    //   await this.$store.dispatch('registration', { name, password, email })
+                    await this.registerUser({ name, password, email })
+                    this.$router.push({ name: 'homepage' })
                      form.reset()
                 } catch (error) {
                     console.log(error)
