@@ -27,12 +27,12 @@ const routes = [
     name: "apartment",
   },
   {
-    path: "/apartments-vue/login",
+    path: "/login",
     component: LoginPage,
     name: "Login-page",
   },
   {
-    path: "/apartments-vue/registration",
+    path: "/registration",
     component: RegistrationPage,
     name: "registration-page",
   },
