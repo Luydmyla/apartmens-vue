@@ -53,7 +53,7 @@ const filteredApartments = computed(() => {
 async function created() {
   try {
     const { data } = await getApartmentsList();
-    console.log(data);
+    // console.log(data);
     apartments.value = data;
   } catch (error) {
     console.error(error);
@@ -61,12 +61,10 @@ async function created() {
 }
 created();
 function handleItemClick() {
-  console.log("Item click");
+  // console.log("Item click");
 }
 
-function logger(value) {
-  console.log(value, "---form value");
-}
+
 
 function filter({ city, price }) {
   console.log(filters.value.city, filters.value.price);

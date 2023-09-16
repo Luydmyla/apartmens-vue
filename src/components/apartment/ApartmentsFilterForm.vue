@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$emit("update:submit", { city: this.city, price: this.price });
+      this.$emit("update:modelValue", { city: this.city, price: this.price });
       // console.log("Item click");
     },
   },
