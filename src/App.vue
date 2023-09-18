@@ -2,15 +2,10 @@
 import { reactive, computed, ref } from "vue";
 import AppFooter from "./components/Footer.vue";
 import AppHeader from "./components/Header.vue";
-import { mapGetters } from "vuex";
-// import  Notifications  from "./components/notifications/index";
-// import apartment from "./components/apartment/apartments.js";
-// console.log(this.$store.getters['auth/isLoggedIn'])
-// const isLoggedInBoo = computed(() => {
-//   return mapGetters('auth', ['isLoggedIn'])
-// });
+// import { mapGetters } from "vuex";
+// import Notifications from './components/notifications';
 
-// console.log(isLoggedInBoo)
+
 
 </script>
 
