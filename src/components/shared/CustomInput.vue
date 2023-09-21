@@ -82,7 +82,7 @@ watch: {
 .wrapper-input {
   position: relative;
   display: inline-flex;
-  
+    width: 100%;
    /* margin-bottom: 20px; */
 }
 .custom-input {

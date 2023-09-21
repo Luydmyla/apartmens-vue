@@ -1,7 +1,7 @@
 <script setup>
 import { reactive, computed, ref } from "vue";
 import AppFooter from "./components/Footer.vue";
-import AppHeader from "./components/Header.vue";
+import AppHeader from "./components/header/index.vue";
 // import { mapGetters } from "vuex";
 // import Notifications from './components/notifications';
 
