@@ -16,13 +16,15 @@
                 <router-link class="account-actions__link" :to="{ name: 'my-orders' }">Мої замовлення</router-link>
             </li>
             <li class="account-actions__item">
-                <button class="account-actions__logout">Вийти</button>
+                <button   @click="logout" class="account-actions__logout">Вийти</button>
             </li>
         </ul>
     </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
     name: 'AccountActions',
     data() {
@@ -31,6 +33,7 @@ export default {
         }
     },
     methods: {
+         ...mapActions('auth', ['logout']),
         open() {
             this.isOpen = true
         },
