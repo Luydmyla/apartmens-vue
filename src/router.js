@@ -37,6 +37,11 @@ const routes = [
     name: "registration-page",
   },
   {
+    path: "/my-orders",
+    component: RegistrationPage,
+    name: "my-orders",
+  },
+  {
     path: "/apartments-vue/:pathMatch(.*)",
     component: ErrorPage,
     name: "error-page",

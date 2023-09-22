@@ -5,7 +5,8 @@
   <router-link to="/apartments-vue">
           <Logo />
         </router-link>
-      <AuthActions/>
+        <AccountActions v-if="isLoggedIn" />
+        <AuthActions v-else/>
       </div>
       
     </Container>
@@ -16,12 +17,20 @@
 import Container from "../shared/Container.vue";
 import Logo from "../Logo.vue";
 import AuthActions from "./AuthActions.vue";
+import AccountActions from "./AccountActions.vue";
+import { mapGetters } from 'vuex'
+
+
 export default {
   name: "Header",
   components: {
     Container,
     Logo,
     AuthActions,
+    AccountActions,
+  },
+  computed: {
+    ...mapGetters('auth', ['isLoggedIn'])
   },
 };
 </script>
