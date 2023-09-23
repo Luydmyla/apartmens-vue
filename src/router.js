@@ -5,6 +5,8 @@ import Apartment from "./pages/Apartment.vue";
 import ErrorPage from "./pages/ErrorPage.vue";
 import LoginPage from "./pages/Login.vue";
 import RegistrationPage from "./pages/Registration.vue";
+import MyOrdersPage from "./pages/MyOrders.vue";
+
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
@@ -38,7 +40,7 @@ const routes = [
   },
   {
     path: "/my-orders",
-    component: RegistrationPage,
+    component: MyOrdersPage,
     name: "my-orders",
   },
   {
