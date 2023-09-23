@@ -16,15 +16,22 @@
       class="apartment-main-info__photo"
     />
     <p class="apartment-main-info__description">{{ apartment.descr }}</p>
-  </article>
+ <div class="apartment-main-info__btn">
+     <Button> Забронювати </Button>
+   </div>
+ 
+ </article>
 </template>
 
 <script>
 import Rating from "../StarRating.vue";
+import Button from "../shared/Button.vue"
+
 export default {
   name: "ApartmentsMainInfo",
   components: {
     Rating,
+    Button,
   },
   props: {
     apartment: {
@@ -56,6 +63,10 @@ export default {
   &__description {
     line-height: 1.3;
     margin-top: 30px;
+  }
+  &__btn{
+margin-top: 20px;
+text-align: center;
   }
 }
 </style>

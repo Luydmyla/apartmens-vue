@@ -50,6 +50,7 @@ export default {
 .btn {
    position: relative;
   display: inline-block;
+    font-family: Montserrat, sans-serif;
   font-size: 18px;
   background: #ff662d;
   color: #fff;
@@ -57,7 +58,13 @@ export default {
   min-width: 220px;
   border: 1px solid transparent;
   padding: 8px 15px;
+   transition: background-color 0.4s, color 0.4s;
 
+  &:hover {
+    background: #fff;
+    color: #ff662d;
+    border: 2px solid grey;
+  }
   &--outlined {
     background: none;
     border: 1px solid blue;
