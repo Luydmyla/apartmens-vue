@@ -35,6 +35,7 @@ export default {
 .preloader-icon {
     stroke-dasharray: 0 250;
     animation: preloader 4s infinite;
+    /* color: blue; */
 }
 
 @keyframes preloader {

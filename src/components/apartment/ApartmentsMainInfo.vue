@@ -17,7 +17,7 @@
     />
     <p class="apartment-main-info__description">{{ apartment.descr }}</p>
  <div class="apartment-main-info__btn">
-     <Button> Забронювати </Button>
+     <Button @click="handleApartmentsBooking" :loading ="loading"> Забронювати </Button>
    </div>
  
  </article>
@@ -26,6 +26,7 @@
 <script>
 import Rating from "../StarRating.vue";
 import Button from "../shared/Button.vue"
+import { bookApartment } from "../../services/orders.service"
 
 export default {
   name: "ApartmentsMainInfo",
@@ -39,6 +40,38 @@ export default {
       requared: true,
     },
   },
+  data() {
+    return {
+      loading: false,
+    }
+  },
+  methods: {
+    async handleApartmentsBooking() {
+      const body = {
+        apartmentId: this.$route.params.id,
+        date: Date.now(),
+      };
+      try {
+        this.loading = true;
+        await bookApartment(body);
+        this.$notify({
+          type: 'success',
+          title: 'Ваше замовлення додано',
+
+        });
+      } catch (error) {
+        this.$notify({
+          type: 'error',
+          title: 'Сталася помилка',
+          text: error.message,
+        });
+      }
+      finally {
+        this.loading = false
+      }
+
+    }
+  }
 };
 </script>
 
