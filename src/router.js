@@ -39,7 +39,7 @@ const routes = [
     name: "registration-page",
   },
   {
-    path: "/my-orders",
+    path: "/apartments-vue/my-orders",
     component: MyOrdersPage,
     name: "my-orders",
   },
