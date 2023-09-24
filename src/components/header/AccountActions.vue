@@ -16,7 +16,7 @@
                 <router-link class="account-actions__link" :to="{ name: 'my-orders' }">Мої замовлення</router-link>
             </li>
             <li class="account-actions__item">
-                <button   @click="logout" class="account-actions__logout">Вийти</button>
+                <button   @click="handleLogout" class="account-actions__logout">Вийти</button>
             </li>
         </ul>
     </div>
@@ -42,6 +42,20 @@ export default {
         },
         toggle() {
             this.isOpen = !this.isOpen
+        },
+async handleLogout() {
+            try {
+                await this.logout()
+                const { requiresAuth } = this.$route.meta;
+                if (requiresAuth) {
+                    this.$router.push({ name: 'Login-page' });
+             }
+            } catch (error) {
+                this.$notify({
+                    type: 'error',
+                    title: 'Упссс... Вийти не вдалося ще',
+                });
+            }
         }
     }
 }
