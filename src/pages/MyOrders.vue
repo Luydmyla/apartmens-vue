@@ -4,7 +4,7 @@
             <Container>
                 <section class="my-orders-page__content">
                     <MainTitle> Замовлення </MainTitle>
-                    <OrdersList :items="orders" />
+                    <OrdersList @orderDeleted="onItemDeleted" :items="orders" />
                 </section>
             </Container>
         </SectionWithHeaderSpacer>
@@ -42,6 +42,14 @@ export default {
                 title: 'Упссс... Щось пішло не так :/',
                 text: error.message,
             });
+        }
+    },
+    methods: {
+        onItemDeleted(order) {
+            const orderIndex = this.orders.indexOf(order)
+            console.log(orderIndex)
+            this.orders.splice(orderIndex, 1)
+            return this.orders
         }
     }
 }

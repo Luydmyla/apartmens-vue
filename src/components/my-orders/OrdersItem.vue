@@ -1,25 +1,67 @@
 <template>
     <div class="orders-item">
-        <img :src="order.imgUrl" alt="фото апартаментів" class="orders-item__photo" />
+        <img :src="order.apartment.imgUrl" alt="фото апартаментів" class="orders-item__photo" />
         <div class="orders-item__details">
             <div class="orders-item__text">
-                <h2 class="orders-item__title">{{ order.title }}</h2>
-                <p class="orders-item__location">{{ order.location.city }}</p>
+                <h2 class="orders-item__title">{{ order.apartment.title }}</h2>
+                <p class="orders-item__location">{{ order.apartment.location.city }}</p>
             </div>
             <div class="orders-item__cost">
-                <span class="orders-item__price">UAH {{ order.price }}</span> за ніч
+                <span class="orders-item__price">UAH {{ order.apartment.price }}</span> за ніч
             </div>
         </div>
+            <Button @click="handledeleteOrdersByID" :loading ="loading" > Видалити </Button>
     </div>
 </template>
 
 <script>
+import { deleteOrdersByID } from "../../services/orders.service"
+import Button from '../shared/Button.vue'
 export default {
     name: "OrdersItem",
+    components: {
+        Button,
+    },
     props: {
         order: {
             type: Object,
             requared: true,
+        }
+    },
+    data() {
+        return {
+            loading: false,
+        }
+    },
+    methods: {
+        async handledeleteOrdersByID() {
+          const   orderId= this.order.id
+                 console.log(orderId)
+            
+            
+            try {
+                this.loading = true;
+                await deleteOrdersByID(orderId);
+              
+                this.$notify({
+                    type: 'success',
+                    title: 'Замовлення видалено',
+
+                });
+
+                this.$emit("deleted", this.order );
+
+            } catch (error) {
+                this.$notify({
+                    type: 'error',
+                    title: 'Сталася помилка',
+                    text: error.message,
+                });
+            }
+            finally {
+                this.loading = false
+            }
+
         }
     }
 }

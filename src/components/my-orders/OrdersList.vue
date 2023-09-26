@@ -1,8 +1,8 @@
 <template>
-    <div class="orders-list">
+    <div     class="orders-list">
         <p v-if="!items.length"> Замовлень немає </p>
            <template v-else>
-            <OrdersItem v-for="order in items" :key="order.id" :order="order.apartment" />
+            <OrdersItem v-for="order in items" :key="order.id" :order="order" @deleted="onOrderDeleted"/>
         </template>
 
     </div>
@@ -21,6 +21,11 @@ export default {
             requared: true,
         }
     },
+    methods: {
+        onOrderDeleted(order) {
+            this.$emit('orderDeleted', order)
+        }
+    }
 }
 </script>
 
