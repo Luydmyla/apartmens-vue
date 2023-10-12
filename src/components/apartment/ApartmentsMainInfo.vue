@@ -25,7 +25,7 @@
 
 <script>
 import Rating from "../StarRating.vue";
-import Button from "../shared/button.vue"
+import Button from "../shared/Button.vue"
 import { bookApartment } from "../../services/orders.service"
 
 export default {
