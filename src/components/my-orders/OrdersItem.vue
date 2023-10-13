@@ -10,7 +10,10 @@
                 <span class="orders-item__price">UAH {{ order.apartment.price }}</span> за ніч
             </div>
         </div>
-            <Button @click="handledeleteOrdersByID" :loading ="loading" > Видалити </Button>
+        <div class="btn-delete">
+    <Button type="button" @click="handledeleteOrdersByID" :loading ="loading" > Видалити </Button>
+        </div>
+            
     </div>
 </template>
 
@@ -99,5 +102,9 @@ export default {
         font-size: 20px;
         font-weight: 700;
     }
+}
+.btn-delete{
+    display: flex;
+    align-items: center;
 }
 </style>
